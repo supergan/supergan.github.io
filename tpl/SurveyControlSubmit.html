@@ -1,0 +1,127 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li class="active"><a href="#sectionA">Plan</a></li>
+	<li><a href="#sectionB">Final</a></li>
+</ul>
+<div class="tab-content" style="height:400px;overflow:auto;">
+	<div id="sectionA" class="tab-pane fade in active">
+		<div class='table' id='surveyControlTable'>
+			<div class="tr" >
+				<div class="label label-primary td"><div>Permanent</div><div>Identifier (PID)</div></div>
+				<div class="label label-primary td">Station Name</div>
+				<div class="label label-primary td" id="usageLabel">Usage</div>
+				<div class="label label-primary td">Station Type</div>
+				<div class="label label-primary td">Agency</div>
+				<div class="label label-primary td"><div>Horizontal</div><div>Accuracy</div></div>
+				<div class="label label-primary td"><div>Ellipsoid</div><div>Height</div></div>
+				<div class="label label-primary td"><div>GPS Ortho</div><div>Height</div></div>
+				<div class="label label-primary td"><div>Leveling</div><div>Procedure</div></div>
+				<div class="label label-primary td"><div>Stability</div><div>Code</div></div>
+				<div class="label label-primary td"><div>Recovery</div><div>Date</div></div>
+				<div class="label label-primary td"><div>Recovery</div><div>Condition</div></div>
+				<div class="label label-primary td"><div>Type of Land</div><div>Ownership</div></div>
+			</div>
+			<form ng-repeat="surveyData in surveyDataSet" class="form-inline tr">
+    		<div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="pID" style="width:100px" ng-model="surveyData.pID"></div>
+    		<div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="stationName" style="width:100px" ng-model="surveyData.stationName"></div>
+			<div class="td">
+		  		<div class="btn-group" data-toggle="buttons" ng-click="setModelValue($event)">
+					<label class="btn btn-default btn-mini form-control">
+						<input value="survey" type="radio">Survey
+					</label>
+					<label class="btn btn-default btn-mini form-control">
+						<input value="remoteSensing" type="radio">Remote Sensing
+					</label>
+					<label class="btn btn-default btn-mini form-control">
+						<input value="opusCheckPoint" type="radio">OPUS Checkpoint
+					</label>
+		      	</div>
+		      	<input id="helper" name="usage" type="text" style="visibility:hidden" ng-model="surveyData.usage">
+			</div>
+			<div>
+				<select name="stationType" ng-model="surveyData.stationType">
+					<option></option>			
+					<option>CORS</option>
+					<option>PACS</option>
+					<option>SACS</option>
+					<option>TSM</option>
+					<option>CBN</option>
+					<option>FBN</option>
+					<option>CTCORS</option>
+				</select>
+			</div>
+			<div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="agency" style="width:100px" ng-model="surveyData.agency"></div>
+			<div class="td">
+				<select name="horizonalAccuracy" ng-model="surveyData.horizonalAccuracy">
+					<option></option>			
+					<option>1stOrder</option>
+					<option>2ndOrder</option>
+					<option>AOrder</option>
+					<option>BOrder</option>
+				</select>
+			</div>
+			<div class="td">
+				<select name="ellipsoidHeight" ng-model="surveyData.ellipsoidHeight">
+					<option></option>			
+					<option>FAA</option>
+					<option>HTMOD</option>
+					<option>Other</option>
+				</select>
+			</div>
+			<div class="td">
+				<select name="gpsOrthoHeight" ng-model="surveyData.gpsOrthoHeight">
+					<option></option>			
+					<option>FAA</option>
+					<option>HTMOD</option>
+					<option>Other</option>
+				</select>
+			</div>
+			<div class="td">
+				<select name="levelingProcedure" ng-model="surveyData.levelingProcedure">
+					<option></option>			
+					<option>1stOrder_ClassI</option>
+					<option>1stOrder_ClassII</option>
+					<option>2ndOrder_ClassI</option>
+					<option>2ndOrder_ClassII</option>
+					<option>3rdOrder</option>
+				</select>
+			</div>
+			<div class="td">
+				<select name="stabilityCode" ng-model="surveyData.stabilityCode">
+					<option></option>			
+					<option>Code1</option>
+					<option>Code2</option>
+				</select>
+			</div>
+			<div class="td">
+		    	<input type="text" name="recoveredDate" class="form-control input-xs datePicker" style="width:100px" ng-model="surveyData.recoveredDate">
+				<script>
+					$('.form-control.input-xs.datePicker').datepicker();
+				</script>
+			</div>
+			<div class="td">
+				<select name="recoveredCondition" ng-model="surveyData.recoveredCondition">
+					<option></option>			
+					<option>Condition1</option>
+					<option>Condition2</option>
+				</select>
+			</div>
+			<div class="td">
+				<select name="landOwnership" ng-model="surveyData.landOwnership">
+					<option></option>			
+					<option>OwnerType1</option>
+					<option>OwnerType2</option>
+				</select>
+			</div>
+		</form>
+		</div>
+
+		<button id="addSurvey" class="btn btn-default" style="margin:20px 10px 20px 40px;" ng-click="addRow()">Add</button>
+		<button id="submitData" class="btn btn-default" style="margin:20px 20px 20px 10px;" ng-click="submitData()">Submit</button>
+		<img src="pics/712.GIF" id="waitingGIF"></img>
+	<p style="margin-left:20px"><a href="#/RSRecFileUpload">Click here to access Remote Sensing File Upload Page</a></p>
+	</div>
+	<div id="sectionB" class="tab-pane fade">
+		<p style="margin:20px">Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+    </div>
+
+</div>
