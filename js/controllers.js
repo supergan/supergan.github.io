@@ -1,4 +1,4 @@
-app.controller('SurveyControlSubmit', function ($scope) {
+app.controller('SurveyControlSubmit', function ($scope, DataService) {
 	
 	console.log("--> SurveyControlSubmit controller called");
 	
@@ -32,15 +32,11 @@ app.controller('SurveyControlSubmit', function ($scope) {
 	    $scope.surveyDataSet.push(newData);
 	};
 	
+	//add the first new row when the app is initialized
+	$scope.addRow();
+	
 	$scope.submitData = function(){
-
-		$('#waitingGIF').eq(0).attr("style","visibility:visible");
-		console.log($scope.surveyDataSet);
-		//make ajax call; use timer to mimic ajax callback
-		setTimeout(function(){
-			$('#waitingGIF').eq(0).attr("src","pics/Check-Free_Use.png");
-			}, 3000);
-
+		DataService.insertData($scope.surveyDataSet);
 	};
 	
 	$scope.setModelValue = function(event){
@@ -50,7 +46,7 @@ app.controller('SurveyControlSubmit', function ($scope) {
 			.trigger('input');//trigger input to ngModel after setting value so the model value is updated
 	};
 	
-	$scope.addRow();
+
 
 });
 
