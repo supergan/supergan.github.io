@@ -36,46 +36,48 @@
 	<div id="sectionA" class="tab-pane fade in active">
 		<div class='table' id='surveyControlTable'>
 			<div class="tr" >
-				<div class="label label-primary td">Permanent Identifier (PID)</div>
+				<div class="label label-primary td"><div>Permanent</div><div>Identifier (PID)</div></div>
 				<div class="label label-primary td">Station Name</div>
-				<div class="label label-primary td test">Usage</div>
+				<div class="label label-primary td" id="usageLabel">Usage</div>
 				<div class="label label-primary td">Station Type</div>
 				<div class="label label-primary td">Agency</div>
-				<div class="label label-primary td">Horizontal Accuracy</div>
-				<div class="label label-primary td">Ellipsoid Height</div>
-				<div class="label label-primary td">GPS Ortho Height</div>
-				<div class="label label-primary td">Leveling Procedure</div>
-				<div class="label label-primary td">Stability Code</div>
-				<div class="label label-primary td">Recovery Date</div>
-				<div class="label label-primary td">Recovery Condition</div>
-				<div class="label label-primary td">Type of Land Ownership</div>
+				<div class="label label-primary td"><div>Horizontal</div><div>Accuracy</div></div>
+				<div class="label label-primary td"><div>Ellipsoid</div><div>Height</div></div>
+				<div class="label label-primary td"><div>GPS Ortho</div><div>Height</div></div>
+				<div class="label label-primary td"><div>Leveling</div><div>Procedure</div></div>
+				<div class="label label-primary td"><div>Stability</div><div>Code</div></div>
+				<div class="label label-primary td"><div>Recovery</div><div>Date</div></div>
+				<div class="label label-primary td"><div>Recovery</div><div>Condition</div></div>
+				<div class="label label-primary td"><div>Type of Land</div><div>Ownership</div></div>
 			</div>
 		</div>
-		<button id="addSurvey" class="btn btn-default">Add</button>
-		<button id="submitData" class="btn btn-default">Submit</button>
+		<button id="addSurvey" class="btn btn-default" style="margin:20px 10px 20px 40px;">Add</button>
+		<button id="submitData" class="btn btn-default" style="margin:20px 20px 20px 10px;">Submit</button>
+		<img src="pics/712.GIF" id="waitingGIF"></img>
 	</div>
 	<div id="sectionB" class="tab-pane fade">
-		<p style="margin-top:20px">Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
+		<p style="margin:20px">Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
     </div>
 </div>
 
 <script type="text/template" id="surveyControlEntryTemplate">
 <form class="form-inline tr">
-    <div class="td"><input type="text" class="form-control input-sm" placeholder="Enter Text" name="pID"></div>
-    <div class="td"><input type="text" class="form-control input-sm" placeholder="Enter Text" name="stationName"></div>
+    <div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="pID" style="width:100px"></div>
+    <div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="stationName" style="width:100px"></div>
 	<div class="td">
-  		<label class="radio-inline radioGroup">
-          <input name="usage" id="radio1" value="Survey" type="radio">Survey
-        </label>
-        <label class="radio-inline radioGroup">
-          <input name="usage" id="radio2" value="RemoteSensing" checked="" type="radio">Remote Sensing
-        </label>
-        <label class="radio-inline radioGroup">
-          <input name="usage" id="radio3" value="OPUSCheckPoint" type="radio">OPUS Checkpoint
-        </label>
+  		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default btn-mini form-control">
+				<input name="usage" value="survey" type="radio">Survey
+			</label>
+			<label class="btn btn-default btn-mini form-control">
+				<input name="usage" value="remoteSensing" type="radio">Remote Sensing
+			</label>
+			<label class="btn btn-default btn-mini form-control">
+				<input name="usage" value="opusCheckPoint" type="radio">OPUS Checkpoint
+			</label>
+      </div>
 	</div>
-	<div class="td">
-		<select class="form-control" name="stationType">
+		<select name="stationType">
 			<option></option>			
 			<option>CORS</option>
 			<option>PACS</option>
@@ -86,9 +88,9 @@
 			<option>CTCORS</option>
 		</select>
 	</div>
-<div class="td"><input type="text" class="form-control input-sm" placeholder="Enter Text" name="agency"></div>
+<div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="agency" style="width:100px"></div>
 <div class="td">
-		<select class="form-control" name="horizonalAccuracy">
+		<select name="horizonalAccuracy">
 			<option></option>			
 			<option>1stOrder</option>
 			<option>2ndOrder</option>
@@ -97,7 +99,7 @@
 		</select>
 	</div>
 <div class="td">
-		<select class="form-control" name="ellipsoidHeight">
+		<select name="ellipsoidHeight">
 			<option></option>			
 			<option>FAA</option>
 			<option>HTMOD</option>
@@ -105,7 +107,7 @@
 		</select>
 	</div>
 <div class="td">
-		<select class="form-control" name="gpsOrthoHeight">
+		<select name="gpsOrthoHeight">
 			<option></option>			
 			<option>FAA</option>
 			<option>HTMOD</option>
@@ -113,7 +115,7 @@
 		</select>
 	</div>
 <div class="td">
-		<select class="form-control" name="levelingProcedure">
+		<select name="levelingProcedure">
 			<option></option>			
 			<option>1stOrder_ClassI</option>
 			<option>1stOrder_ClassII</option>
@@ -123,35 +125,31 @@
 		</select>
 	</div>
 <div class="td">
-		<select class="form-control" name="stabilityCode">
+		<select name="stabilityCode">
 			<option></option>			
 			<option>Code1</option>
 			<option>Code2</option>
 		</select>
 	</div>
 <div class="td">
-	<div class="input-group date" >
-            <input type="text" class="form-control" name="recoveredDate"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-        </div>
+    <input type="text" name="recoveredDate" class="form-control input-xs datePicker" style="width:100px">
 </div>
 <div class="td">
-		<select class="form-control" name="recoveredCondition">
+		<select name="recoveredCondition">
 			<option></option>			
 			<option>Condition1</option>
 			<option>Condition2</option>
 		</select>
 	</div>
 <div class="td">
-		<select class="form-control" name="landOwnership">
+		<select name="landOwnership">
 			<option></option>			
 			<option>OwnerType1</option>
 			<option>OwnerType2</option>
 		</select>
 	</div>
-<div class="td">
-	<img src="pics/712.GIF" id="waitingGIF"></img>
-	</div>
 </form>
+
 </script>
 
 <div id="footer">

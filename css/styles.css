@@ -2,8 +2,8 @@
 DIV.table 
 {
     display:table;
-    width:100%;
-    margin-top:20px;
+    width:80%;
+    margin:20px;
 }
 FORM.tr, DIV.tr
 {
@@ -12,11 +12,7 @@ FORM.tr, DIV.tr
 div.td
 {
     display:table-cell;
-}
-
-.test{
-	width:600px !important;
-	max-width:1000px;
+    text-align:center;
 }
 
 .radioGroup{
@@ -48,5 +44,33 @@ div.td
 	background-image: url("images/Capture.PNG");
 	background-repeat:no-repeat;
 	background-position:center;
+}
 
+#usageLabel{
+	width:290px;
+	min-width:290px;
+}
+
+.form-control {
+	font-size:14px;
+	margin:5px;
+	padding:0px 5px 0px 5px;
+}
+
+select{
+	vertical-align:middle;
+	height:25px;
+	padding:4px;
+	margin:5px;
+}
+
+.input-xs {
+	height:25px;
+}
+
+.btn-mini {
+	font-size:10px;
+    height: 25px;
+    line-height: 14px;
+    padding-top:3px;
 }
