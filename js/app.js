@@ -1,7 +1,7 @@
 
 console.log("--> app.js run");
 
-var app = angular.module('faaSurvey', ['ngRoute']);
+var app = angular.module('faaSurvey', ['ngRoute','angularFileUpload']);
  
 app.config(function($routeProvider) {
   $routeProvider
