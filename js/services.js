@@ -13,7 +13,7 @@ app.service('DataService', function () {
         /*
         $.ajax({
             type: "POST",
-            url: "api/surveymanagerservice/insertsurveycontroldata/",
+            url: "http://173.73.124.108:8080/rest/surveymanagerservice/insertsurveycontroldata/",
             data: JSON.stringify(insertData),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -24,5 +24,10 @@ app.service('DataService', function () {
         });
         */
     };
+    
+    this.docUpload = 'http://173.73.124.108:8080/rest/surveymanagerservice/insertsurveycontroldocument/';
+    
+    this.docSearch = function (identifier) {
+    }
 
 });

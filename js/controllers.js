@@ -48,14 +48,14 @@ app.controller('SurveyControlSubmit', function ($scope, DataService) {
 });
 
 
-app.controller('RSRecFileUpload', function ($scope, $fileUploader) {
+app.controller('RSRecFileUpload', function ($scope, $fileUploader, DataService) {
 	
 	console.log("--> RSRecFileUpload controller called");
 	
     // Creates a uploader
     var uploader = $scope.uploader = $fileUploader.create({
         scope: $scope,
-        url: 'upload.php'
+        url: DataService.docUpload
     });
 
 
