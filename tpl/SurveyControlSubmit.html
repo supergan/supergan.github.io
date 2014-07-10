@@ -24,10 +24,10 @@
     		<div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="pID" style="width:100px" ng-model="surveyData.pID"></div>
     		<div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="stationName" style="width:100px" ng-model="surveyData.stationName"></div>
 			<div class="td" >
-                <div class="btn-group" data-toggle="checkboxs">
-                	<input value="survey" type="checkbox" ng-click="setModelValue($event)">Survey
-                    <input value="remoteSensing" type="checkbox" ng-click="setModelValue($event)">Remote Sensing
-                    <input value="opusCheckPoint" type="checkbox" ng-click="setModelValue($event)">OPUS Checkpoint
+                <div style="font-size:10px">
+                	<input value="survey" type="checkbox" ng-click="setModelValue($event)" >Survey
+                    <input value="remoteSensing" type="checkbox" ng-click="setModelValue($event)" style="margin-left:5px">Remote Sensing
+                    <input value="opusCheckPoint" type="checkbox" ng-click="setModelValue($event)" style="margin-left:5px">OPUS Checkpoint
                 </div>
 		      	<input id="helper" name="usage" type="text" style="visibility:hidden" ng-model="surveyData.usage">
 			</div>
