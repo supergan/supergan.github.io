@@ -16,7 +16,7 @@ app.controller('SurveyControlSubmit', function ($scope, DataService) {
 				id: null,
 		    	pID:'', 
 		    	stationName:'',
-		    	usage:'',
+		    	usage:[],
 		    	stationType:'',
 		    	agency:'',
 		    	horizonalAccuracy:'',
@@ -40,10 +40,18 @@ app.controller('SurveyControlSubmit', function ($scope, DataService) {
 	};
 	
 	$scope.setModelValue = function(event){
-		//get clicked item, which is the selected one
-		var selected = $('input',event.target).attr('value');
-		$("#helper",$(event.target).parent().parent()).val(selected)
-			.trigger('input');//trigger input to ngModel after setting value so the model value is updated
+		
+		var currentList=[];
+		
+		$.each($("input[type='checkbox']",$(event.target).parent().parent()), function(index,input){
+			if (input.checked){
+				currentList.push(input.value);
+			}
+		});
+		
+		$("#helper",$(event.target).parent().parent()).val(currentList)
+		.trigger('input');//trigger input to ngModel after setting value so the model value is updated
+
 	};
 });
 
@@ -114,4 +122,14 @@ app.controller('RSRecFileUpload', function ($scope, $fileUploader, DataService) 
     uploader.bind('completeall', function (event, items) {
         console.info('Complete all', items);
     });
+});
+
+app.controller('RSRecFileSearch', function ($scope, DataService) {
+	
+	console.log("--> RSRecFileSearch controller called");
+	
+	$scope.search = function() {
+		DataService.docSearch($scope.docSearch);
+	};
+
 });

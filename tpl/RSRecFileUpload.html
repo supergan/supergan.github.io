@@ -1,38 +1,29 @@
-<div>
-get survey control document and display the image
+<div class="page-header" style="margin:20px;">
+	<h3>Get and View Documentation by Identifier</h3>
+	<form ng-controller="RSRecFileSearch" class="form-inline">
+		<input type="text" class="form-control input-xs" placeholder="Enter Identifier" name="identifier" style="width:120px" ng-model="docSearch.identifer">
+		<button class="btn btn-xs btn-default" style="margin:20px 10px 20px 10px;" ng-click="search()">Get Doc</button>
+	</form>
 </div>
 
 <!-- 1. ng-file-drop | ng-file-drop="options" -->
 <div class="row" ng-controller="RSRecFileUpload" ng-file-drop style="margin:20px">
 
-    <div class="col-md-2">
-
-        <h3>Select files</h3>
-
-        <div ng-show="uploader.isHTML5">
-            <!-- 3. ng-file-over | ng-file-over="className" -->
-           <div class="well my-drop-zone" ng-file-over>
-               Drag & Drop Zone
-           </div>
-       </div>
-       
-       <p><strong>OR</strong></p>
-
-       <!-- 2. ng-file-select | ng-file-select="options" -->
-       <input ng-file-select type="file" multiple  />
-
-   </div>
-
+	<h4>Upload Documentation</h4>
    <div class="col-md-9" style="margin-bottom: 40px">
-       <h3>Files to be Uploaded</h3>
-       <p>Queue length: {{ uploader.queue.length }}</p>
 
+       <p>Number of Files in Queue: {{ uploader.queue.length }}</p>
+       <div class="col-md-2">
+           <!-- 2. ng-file-select | ng-file-select="options" -->
+           <input ng-file-select type="file" />
+       </div>
        <table class="table">
            <thead>
                <tr>
-                   <th>Identifier</th>
-                   <th><div>Select the Documentation</div><div>File to Upload</div></th>
-                   <th width="20%">Name</th>
+                   <th>Permanent Identifier (PID)</th>
+                   <th>Station Name</th>
+                   <th>Type of Document</th>
+                   <th width="20%">FileName</th>
                    <th ng-show="uploader.isHTML5">Size</th>
                    <th ng-show="uploader.isHTML5">Progress</th>
                    <th>Status</th>
@@ -44,6 +35,9 @@ get survey control document and display the image
                	   <td >
                	   		<input type="text" class="form-control input-xs" placeholder="Enter Text" name="identifier" style="width:100px" ng-model="item.formData.identifier">
                	   </td>
+                   <td>
+                       <input type="text" class="form-control input-xs" placeholder="Enter Text" name="stationName" style="width:100px" ng-model="item.formData.stationName">
+                   </td>
                	   <td>
 						<select name="stationType" style="width:150px" ng-model="item.formData.stationType">
 							<option></option>			
@@ -64,7 +58,7 @@ get survey control document and display the image
                        <!--auto height-->
                        <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
                        <!--auto width-->
-                       <div ng-show="uploader.isHTML5" ng-thumb="{ file: item.file, height: 100 }"></div>
+                       <div ng-show="uploader.isHTML5" ng-thumb="{ file: item.file, height: 100,width:150 }"></div>
                        <!--fixed width and height -->
                        <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
                    </td>
@@ -90,10 +84,28 @@ get survey control document and display the image
                            <span class="glyphicon glyphicon-trash"></span> Remove
                        </button>
                    </td>
+                   
                </tr>
            </tbody>
        </table>
-
+       
+       <div>
+            <p>
+                Queue progress:
+                <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                </div>
+            </p>
+            <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                <span class="glyphicon glyphicon-upload"></span> Upload all
+            </button>
+            <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+            </button>
+            <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                <span class="glyphicon glyphicon-trash"></span> Remove all
+            </button>
+        </div>
     </div>
 
 </div>

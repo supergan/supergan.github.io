@@ -27,7 +27,21 @@ app.service('DataService', function () {
     
     this.docUpload = 'http://173.73.124.108:8080/rest/surveymanagerservice/insertsurveycontroldocument/';
     
-    this.docSearch = function (identifier) {
-    }
+    this.docSearch = function (docSearch) {
+    	console.log("--> DataService called - AJAX to get document")
+    	/*
+        $.ajax({
+            type: "GET",
+            url: "http://173.73.124.108:8080/rest/surveymanagerservice/getsurveycontroldocument/",
+            data: JSON.stringify(docSearch),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){window.open(data, '_blank');},
+            failure: function(errMsg) {
+                console.log(errMsg);
+            }
+        });
+        */
+    };
 
 });

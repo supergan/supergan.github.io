@@ -23,18 +23,12 @@
 			<form ng-repeat="surveyData in surveyDataSet" class="form-inline tr">
     		<div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="pID" style="width:100px" ng-model="surveyData.pID"></div>
     		<div class="td"><input type="text" class="form-control input-xs" placeholder="Enter Text" name="stationName" style="width:100px" ng-model="surveyData.stationName"></div>
-			<div class="td">
-		  		<div class="btn-group" data-toggle="buttons" ng-click="setModelValue($event)">
-					<label class="btn btn-default btn-mini form-control">
-						<input value="survey" type="radio">Survey
-					</label>
-					<label class="btn btn-default btn-mini form-control">
-						<input value="remoteSensing" type="radio">Remote Sensing
-					</label>
-					<label class="btn btn-default btn-mini form-control">
-						<input value="opusCheckPoint" type="radio">OPUS Checkpoint
-					</label>
-		      	</div>
+			<div class="td" >
+                <div class="btn-group" data-toggle="checkboxs">
+                	<input value="survey" type="checkbox" ng-click="setModelValue($event)">Survey
+                    <input value="remoteSensing" type="checkbox" ng-click="setModelValue($event)">Remote Sensing
+                    <input value="opusCheckPoint" type="checkbox" ng-click="setModelValue($event)">OPUS Checkpoint
+                </div>
 		      	<input id="helper" name="usage" type="text" style="visibility:hidden" ng-model="surveyData.usage">
 			</div>
 			<div>
@@ -117,8 +111,8 @@
 
 		<button id="addSurvey" class="btn btn-default" style="margin:20px 10px 20px 40px;" ng-click="addRow()">Add</button>
 		<button id="submitData" class="btn btn-default" style="margin:20px 20px 20px 10px;" ng-click="submitData()">Submit</button>
-		<img src="pics/712.GIF" id="waitingGIF"></img>
-	<p style="margin-left:20px"><a href="#/RSRecFileUpload">Click here to access Remote Sensing File Upload Page</a></p>
+        <img src="pics/712.GIF" id="waitingGIF"></img>
+	<p style="margin-left:20px;margin-top:20px"><a href="#/RSRecFileUpload">Click here to access Survey Control File Upload Page</a></p>
 	</div>
 	<div id="sectionB" class="tab-pane fade">
 		<p style="margin:20px">Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
